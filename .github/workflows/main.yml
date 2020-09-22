@@ -39,7 +39,8 @@ jobs:
           - file: "./src/03_uniswap_v2_syncs.sql"
           - file: "./src/04_parsed_v1_logs.sql"
           - file: "./src/05_uniswap_contracts.sql"
-          - file: "./src/06_user_query.sql"
+          - file: "./src/06_wrappers_query.sql"
+          - file: "./src/07_user_proxy.sql"
 
     steps:
       - uses: actions/checkout@v2

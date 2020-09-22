@@ -7,8 +7,8 @@ CREATE TEMPORARY TABLE all_pairs AS (
   SELECT pair
   from uniswap_v2_pairs
 );
--- returns all addresses that interacted with uniswap
-CREATE TABLE user_query AS (
+-- returns all transactions that interacted with uniswap and our wrappers
+CREATE TABLE wrappers_query AS (
   WITH tokens AS (
     SELECT token
     FROM uniswap_v1_pairs
