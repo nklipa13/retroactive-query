@@ -13,9 +13,11 @@ CREATE TABLE user_query AS (
     SELECT token
     FROM uniswap_v1_pairs
     UNION
+    ALL
     SELECT token0 AS token
     FROM uniswap_v2_pairs
     UNION
+    ALL
     SELECT token1 AS token
     FROM uniswap_v2_pairs
   ),
