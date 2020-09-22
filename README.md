@@ -22,19 +22,6 @@ All queries have a cutoff timestamp of `2020-09-01 00:00:00+00 GMT`. Total distr
 - any account that directly `call`s a Uniswap pair or a Uniswap router contract
 - any address that transfers any liquidity provider tokens or pair tokens to a Uniswap pair or a Uniswap router contract
 - any address that holds liquidity provider tokens for a non-zero number of seconds
-
-### Liquidity providers
-
-- all liquidity is weighted by ETH value of liquidity / total ETH value
-- fixed reward rate per second to all LPs pro-rata
-- total rewards to liquidity providers is `150_000_000` - amount to users
-
-### SOCKS users
-
-1000 UNI goes to:
-
-- every address that burns any SOCKS
-- every address that holds at least 1 SOCKS token
  
 ## Reproduction
 
