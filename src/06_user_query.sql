@@ -22,7 +22,7 @@ CREATE TABLE user_query AS (
     FROM uniswap_v2_pairs
   ),
   token_transfer_senders AS (
-      SELECT DISTINCT from_address as address
+      SELECT *
       FROM `bigquery-public-data.crypto_ethereum.token_transfers`
       WHERE
         (token_address IN (SELECT token FROM tokens) OR token_address IN (SELECT pair FROM all_pairs))
@@ -30,30 +30,15 @@ CREATE TABLE user_query AS (
             SELECT contract
             FROM uniswap_contracts
         )
+        AND from_address IN ('0x0aa70981311d60a9521c99cecfdd68c3e5a83b83', '0x1e30124fde14533231216d95f7798cd0061e5cf8', '0x880a845a85f843a5c67db2061623c6fc3bb4c511', '0xff92ada50cdc8009686867b4a470c8769bedb22d')
         AND block_timestamp < @cutoff_timestamp
   ),
-  uniswap_traces as (
-    SELECT
-        from_address as address
-    FROM `bigquery-public-data.crypto_ethereum.traces`
-    WHERE
-      to_address IN (
-         SELECT contract
-         FROM uniswap_contracts
-      )
-      AND block_timestamp < @cutoff_timestamp
-      AND call_type = 'call'
-  )
-  SELECT DISTINCT address
+  SELECT *
   FROM (
-      SELECT DISTINCT address
-      FROM uniswap_traces
-      UNION
-      DISTINCT
-      SELECT DISTINCT address
+      SELECT *
       FROM token_transfer_senders
     )
-  WHERE address NOT IN (
+  WHERE from_address NOT IN (
       SELECT contract
       FROM uniswap_contracts
   )
