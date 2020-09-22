@@ -13,11 +13,9 @@ CREATE TABLE user_query AS (
     SELECT token
     FROM uniswap_v1_pairs
     UNION
-    DISTINCT
     SELECT token0 AS token
     FROM uniswap_v2_pairs
     UNION
-    DISTINCT
     SELECT token1 AS token
     FROM uniswap_v2_pairs
   ),
