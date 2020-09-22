@@ -1,0 +1,23 @@
+{
+  "name": "retroactive-query",
+  "version": "1.0.0",
+  "description": "[![Run Queries](https://github.com/Uniswap/retroactive-query/workflows/Run%20Queries/badge.svg)](https://github.com/Uniswap/retroactive-query/actions?query=workflow%3A%22Run+Queries%22)",
+  "main": "verify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nklipa13/retroactive-query.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nklipa13/retroactive-query/issues"
+  },
+  "homepage": "https://github.com/nklipa13/retroactive-query#readme",
+  "devDependencies": {
+    "axios": "^0.20.0",
+    "line-reader": "^0.4.0"
+  }
+}
