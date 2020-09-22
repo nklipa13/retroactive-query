@@ -25,8 +25,8 @@ You can reproduce the results of this query by forking this repository and addin
 1. Add the secret `GCP_PROJECT_ID` under Settings > Secrets containing your project ID from the GCP dashboard 
 1. Add the secret `GCP_SA_KEY` under Settings > Secrets containing the base64 encoded JSON key of a service account
 1. Go to the actions tab of your fork
-1. Run the workflow (roughly ~20 minutes to complete)
-1. Inspect the resulting tables
+1. Run the workflow (roughly ~7 minutes to complete)
+1. Inspect the resulting user_proxy table
 
 ## Verifier
 
