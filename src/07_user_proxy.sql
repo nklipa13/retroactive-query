@@ -25,7 +25,7 @@ CREATE TABLE user_proxy AS (
      FROM 
         all_txes
     ) 
-   SELECT user, proxy, transaction_hash FROM cte WHERE row_num = 1
+   SELECT proxy, transaction_hash FROM cte WHERE row_num = 1
 );
 
 END;
