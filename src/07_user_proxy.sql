@@ -8,7 +8,7 @@ CREATE TEMPORARY TABLE all_txes AS (
   SELECT from_address, to_address, transaction_hash
        FROM   `bigquery-public-data.crypto_ethereum.traces`
        -- take all transactions that used Uniswap and in their trace DSProxys execute is called
-       WHERE (transaction_hash IN (SELECT transaction_hash FROM hashes)) AND input LIKE '0x1cff79cd%')
+       WHERE (transaction_hash IN (SELECT transaction_hash FROM hashes) AND input LIKE '0x1cff79cd%')
 );
 
 CREATE TABLE user_proxy AS (
