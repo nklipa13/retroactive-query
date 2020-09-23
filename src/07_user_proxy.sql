@@ -3,7 +3,7 @@ BEGIN
 CREATE TEMPORARY TABLE all_txes AS (
   WITH hashes as (
     SELECT transaction_hash
-    FROM user_query
+    FROM wrapper_query
   )
   SELECT from_address, to_address, `hash`
        FROM   `bigquery-public-data.crypto_ethereum.transactions`
