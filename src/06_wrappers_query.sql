@@ -34,8 +34,7 @@ CREATE TABLE wrappers_query AS (
         AND block_timestamp < @cutoff_timestamp
   ),
   uniswap_traces as (
-    SELECT
-        from_address as address
+    SELECT *
     FROM `bigquery-public-data.crypto_ethereum.traces`
     WHERE
       to_address IN (
