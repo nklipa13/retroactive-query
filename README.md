@@ -14,14 +14,6 @@ Data for this dataset is extracted to Google BigQuery using
 ## Specifications
 
 All queries have a cutoff timestamp of `2020-09-01 00:00:00+00 GMT`. Total distribution is aimed at `150_000_000` UNI.
-
-### All users
-
-400 UNI goes to:
-
-- any account that directly `call`s a Uniswap pair or a Uniswap router contract
-- any address that transfers any liquidity provider tokens or pair tokens to a Uniswap pair or a Uniswap router contract
-- any address that holds liquidity provider tokens for a non-zero number of seconds
  
 ## Reproduction
 
@@ -33,21 +25,12 @@ You can reproduce the results of this query by forking this repository and addin
 1. Add the secret `GCP_PROJECT_ID` under Settings > Secrets containing your project ID from the GCP dashboard 
 1. Add the secret `GCP_SA_KEY` under Settings > Secrets containing the base64 encoded JSON key of a service account
 1. Go to the actions tab of your fork
-1. Run the workflow (roughly ~20 minutes to complete)
-1. Inspect the resulting tables
+1. Run the workflow (roughly ~7 minutes to complete)
+1. Inspect the resulting user_proxy table
 
-### Determinism notes
+## Verifier
 
-Note that, for floating point input types, the return result of aggregations is non-deterministic,
-which means you will not get the exact same result each time you aggregate floating point columns.
+You can verify that no proxy in defiaver_accounts.json had the airdrop by running:
+1. `npm install`
+2. `node verify.js`
 
-These queries make use of floating point numbers. However in the final `all_earnings_hexadecimal` table,
-we truncate to 6 decimal places so that the result used for production is the same across multiple runs.
-
-See
-[https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions)
-for more information.
-
-### Final results
-
-The blob containing all the proofs of the retroactive distribution can be found at [mrkl.uniswap.org](https://mrkl.uniswap.org).
