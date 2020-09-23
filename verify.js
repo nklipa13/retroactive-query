@@ -19,7 +19,7 @@ const verifyAddress = async (address) => {
 } 
 
 (async () => {
-	lineReader.eachLine('./defisaver_accounts.json', async function(line) {
+	lineReader.eachLine('./defisaver_accounts.json', async function(line, last) {
     	const account = JSON.parse(line);
 
     	const isOk = await verifyAddress(account.proxy);
@@ -27,6 +27,8 @@ const verifyAddress = async (address) => {
     	if (!isOk) {
     		console.log(`${account.proxy} already got the airdrop`);
     	}
+
+    	if (last) console.log('Finished');
 	});
 })();
 
